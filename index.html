@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      overflow: hidden;
+    }
+  </style>
+
+  <body>
+    <div class="bg-white h-screen flex justify-center items-center">
+      <div class="w-[28rem] h-[40rem] bg-white rounded-xl shadow-lg">
+        <div
+          class="flex justify-center items-center mt-4 border-b-2 border-gray-300"
+        >
+          <p class="text-2xl font-semibold cursor-pointer hover:underline mb-4">
+            Todo App App
+          </p>
+        </div>
+        <!-- Todo Start -->
+        <div class="mt-5">
+          <div
+            class="border-b-2 border-gray-300 pb-4 flex justify-center items-center gap-3"
+          >
+            <input
+              type="text"
+              placeholder="Enter Todo"
+              id="input-todo"
+              class="focus:outline-none focus:shadow-lg px-4 py-2 border rounded-lg capitalize"
+            />
+            <button
+              type="submit"
+              id="add-button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            >
+              Add Todo
+            </button>
+          </div>
+        </div>
+        <!-- Todo -->
+        <div class="bodyy mx-5 mt-4">
+          <ul
+            id="todoList"
+            class="flex flex-col justify-center items-center gap-2"
+          >
+            <li
+              class="border flex justify-between items-center w-full px-[1rem] min-h-[3rem] rounded-lg shadow-lg"
+            >
+              <div class="flex items-center">
+                <input type="checkbox" class="mr-2" checked />
+                <span class="${task.done ? 'line-through text-gray-500' : ''}">
+                  Enter Todo
+                </span>
+              </div>
+              <button
+                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+              >
+                Remove
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tailwind  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
