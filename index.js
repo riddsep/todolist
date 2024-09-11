@@ -50,7 +50,3 @@ function showTodos() {
     todoListEl.appendChild(createLi);
   });
 }
-
-// class="${
-//     task.done ? "line-through text-gray-500" : ""
-// }"
