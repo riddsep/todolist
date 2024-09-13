@@ -6,12 +6,16 @@ function addTodo() {
 
   addTodoButton.addEventListener("click", () => {
     const todo = inputTodoEl.value;
+    const getDate = new Date().getMilliseconds();
 
     todos.push({
+      id: getDate,
       todo,
+      done: false,
     });
     inputTodoEl.value = "";
     showTodos();
+    console.log(todos);
   });
 }
 addTodo();
@@ -34,19 +38,46 @@ function showTodos() {
     );
     const componentLi = ` 
             <div class="flex items-center">
-                <input type="checkbox" class="mr-2" checked />
-                    <span>
+                <input type="checkbox" class="mr-2" />
+                    <span class="todo-item" data-id="${todoItem.id}">
                      ${todoItem.todo}
                     </span>
             </div>
-            <button
+            <button id="delete-button"
                 class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
             >
                 Remove
             </button>`;
     createLi.innerHTML = componentLi;
-    console.log(createLi);
-
     todoListEl.appendChild(createLi);
+    deleteTodo();
+    checkedTodo();
+  });
+}
+
+function checkedTodo() {
+  const inputCheckbox = document.querySelectorAll('input[type="checkbox"]');
+
+  inputCheckbox.forEach((checkbox) => {
+    const todoItem = document.querySelectorAll(".todo-item");
+    todoItem.forEach((item) => {
+      checkbox.addEventListener("click", () => {
+        if (checkbox.checked) {
+          item.classList.add("line-through");
+        } else {
+          item.classList.remove("line-through");
+        }
+      });
+    });
+  });
+}
+
+function deleteTodo() {
+  const deleteButton = document.querySelectorAll("#delete-button");
+  deleteButton.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      todos.splice(index, 1);
+      showTodos();
+    });
   });
 }
